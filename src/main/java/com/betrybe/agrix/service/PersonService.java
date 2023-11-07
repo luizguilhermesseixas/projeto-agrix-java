@@ -42,19 +42,6 @@ public class PersonService implements UserDetailsService {
   }
 
   /**
-   * Returns a person for a given username.
-   */
-//  public Person getPersonByUsername(String username) {
-//    Optional<Person> person = personRepository.findByUsername(username);
-//
-//    if (person.isEmpty()) {
-//      throw new PersonNotFoundException();
-//    }
-//
-//    return person.get();
-//  }
-
-  /**
    * Creates a new person.
    */
   public Person create(Person person) {

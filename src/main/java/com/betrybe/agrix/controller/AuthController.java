@@ -44,14 +44,14 @@ public class AuthController {
    * .
    */
   @PostMapping("/login")
-  public ResponseEntity<String> login(@RequestBody AuthDto authDto) {
+  public ResponseEntity<TokenDto> login(@RequestBody AuthDto authDto) {
     UsernamePasswordAuthenticationToken usernamePassword =
         new UsernamePasswordAuthenticationToken(authDto.username(), authDto.password());
     Authentication auth = authenticationManager.authenticate(usernamePassword);
     Person person = (Person) auth.getPrincipal();
     String token = tokenService.generateToken(person);
-    return ResponseEntity.status(HttpStatus.OK)
-        .body(token);
+    TokenDto tokenDto = new TokenDto(token);
+    return ResponseEntity.ok(tokenDto);
   }
 
 }

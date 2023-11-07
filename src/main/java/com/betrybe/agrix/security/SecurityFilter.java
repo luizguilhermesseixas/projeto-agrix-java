@@ -20,7 +20,11 @@ import org.springframework.web.filter.OncePerRequestFilter;
  */
 @Component
 public class SecurityFilter extends OncePerRequestFilter {
+
+  @Autowired
   private final TokenService tokenService;
+
+  @Autowired
   private final PersonService personService;
 
   @Autowired

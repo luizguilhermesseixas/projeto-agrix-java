@@ -31,9 +31,14 @@ public class PersonController {
    * post person.
    */
   @PostMapping
-  public ResponseEntity<PersonDto> createPerson(@RequestBody PersonDto personDto) {
-    Person createdPerson = personService.create(personDto.toEntity());
+  public ResponseEntity<PersonDto> createPerson(@RequestBody Person person) {
+    Person createdPerson = personService.create(person);
+    PersonDto personDto = new PersonDto(
+        createdPerson.getId(),
+        createdPerson.getUsername(),
+        createdPerson.getRole()
+    );
     return ResponseEntity.status(HttpStatus.CREATED)
-        .body(PersonDto.fromEntity(createdPerson));
+        .body(personDto);
   }
 }

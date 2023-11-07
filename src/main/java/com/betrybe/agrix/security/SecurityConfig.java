@@ -1,5 +1,6 @@
 package com.betrybe.agrix.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -20,13 +21,14 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  */
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity(securedEnabled = true)
+//@EnableMethodSecurity(securedEnabled = true)
 public class SecurityConfig {
   private final SecurityFilter securityFilter;
 
   /**
    * .
    */
+  @Autowired
   public SecurityConfig(SecurityFilter securityFilter) {
     this.securityFilter = securityFilter;
   }
